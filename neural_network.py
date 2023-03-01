@@ -19,14 +19,21 @@ class Neural_Network (object):
     def SGD(self, training_data, epochs, mini_batch_size, eta):
 
         for epoch in range(epochs):
+
+            # Shuffle data #
             shuffle(training_data)
+
+            # Construct mini-batches array using mini_batch_size #
             mini_batches = [training_data[x:x+mini_batch_size] for x in range(len(training_data)/mini_batch_size)]
+
+            # Update mini batches #
             for this_batch in mini_batches:
                 self.update_mini_batch(this_batch)
 
     def update_mini_batch(self, this_batch):
+        # Do gradient descent and backprop here #
         pass
 
     @staticmethod
     def sigmoid(z):
-        return 1/1+np.exp(-z)
+        return 1 / 1 + np.exp(-z)
