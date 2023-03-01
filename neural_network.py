@@ -10,9 +10,13 @@ class Neural_Network (object):
         self.biases = [np.random.randn(b, 1) for b in neuron_structure[1:]]
         self.weights = [np.random.randn(y, x) for x, y in zip(neuron_structure[:-1], neuron_structure[1:])]
 
-    def calc_network_activations(self, a):
+    def calc_layer_activations(self, a):
+        
+        # Calculate activations for the next layer based on weights and biases of previous #
         for b, w in zip(self.biases, self.weights):
-            a = self.sigmoid(np.dot(w,a), b)
+            
+            # Calculate a' = σ(wa + b) #
+            a = self.sigmoid(np.dot(w,a) + b)
         return a
     
 
